@@ -1,4 +1,7 @@
-# Aura 0.9pre 
+# Aura 0.9.2
+
+<img src="https://raw.github.com/hull/aura-identity/master/logo/export/halo.png" width="300px" align="right">
+
 [![Build Status](https://travis-ci.org/aurajs/aura.png?branch=master)](https://travis-ci.org/aurajs/aura)
 
 Aura is an event-driven architecture for developing scalable applications using reusable components. It works great with [Backbone.js](http://backbonejs.org), but is framework-agnostic, adapts many best-practice patterns for developing maintainable apps and has first-class support for modern tools like [Bower](http://bower.io), [Grunt](http://gruntjs.com) and [Yeoman](http://yeoman.io).
@@ -99,14 +102,14 @@ This starts the app by saying that it should search for components anywhere in t
 
 ## Creating a Component
 
-By default components are retrieved from a directory called `components/` that must be at the same level as your HTML document.
+By default, components are retrieved from a directory called `components/` that must be at the same level as your HTML document.
 
-Let's say we want to create an "hello" component. To do that we need to create a `components/hello/` directory
+Let's say we want to create a "hello" component. To do that, we need to create a `components/hello/` directory
 
 This directory must contain:
 
 - A `main.js` file. It will bootstrap and describe the component. It is mandatory, no matter how small it can be.
-- All the other files that your component needs (models, templates, …).
+- All the other files that your component needs (models, templates, ...).
 
 For our "hello" component the `main.js` will be:
 
@@ -154,7 +157,7 @@ This will call the `initialize` function of our `reverse` extension.
 ```js
 var app = Aura();
 app.use('extensions/reverse');
-app.start({ widgets: 'body' });
+app.start({ components: 'body' });
 ```
 
 Calling `use` when your `app` is already started will throw an error.
@@ -165,7 +168,7 @@ The Aura [Mediator](https://github.com/aurajs/aura/blob/master/lib/ext/mediator.
 
 * `sandbox.on(name, listener, context)`
 * `sandbox.off(name, listener)`
-* `sandbox.emit(data)`
+* `sandbox.emit(name, data)`
 
 Below we can see an example of a Backbone view using the Mediator to emit a notification when tasks have been cleared and subscribing to changes from `tasks.stats` in order to render when they are updated.
 
@@ -192,11 +195,13 @@ define(['hbs!./stats'], function(template) {
 
 ## Debugging
 
-To enable debug extension and logging pass `{debug: {enable: true}}` into Aura constructor:
+To enable debug extension and logging pass `{debug: {enable: true}}` into the Aura constructor:
 
 ```js
-var app = new Aura({debug: {
-  enable: true
+var app = new Aura({
+  debug: {
+    enable: true
+  }
 });
 ```
 Logger usage:
@@ -209,7 +214,7 @@ logger.log('Hey');
 logger.warn('Hey');
 logger.error('Hey');
 
-//Or directly from Aura app
+// Or directly from Aura app
 
 var logger = app.logger;
 ```
@@ -217,9 +222,11 @@ Below we can see an example how to enable logging in specific ext/components.
 By default all loggers are enabled.
 
 ```js
-var app = new Aura({debug: {
-  enable: true,
-  components: 'aura:mediator login signup info'
+var app = new Aura({
+  debug: {
+    enable: true,
+    components: 'aura:mediator login signup info'
+  }
 });
 ```
 
@@ -239,7 +246,6 @@ window.attachDebugger = function (app) {
   window.aura = app;
 };
 ```
-
 
 # Resources
 
@@ -338,12 +344,12 @@ Want to look at some sample apps built with Aura? Check out:
 <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-4.png"/>
 
 
-###An Aura [TodoMVC](https://github.com/sbellity/aura-todos/) app implemented [two](https://github.com/alexanderbeletsky/todomvc-aura) ways 
+###An Aura [TodoMVC](https://github.com/sbellity/aura-todos/) app implemented [two](https://github.com/alexanderbeletsky/todomvc-aura) ways
 
 <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/todomvc.png"/>
 
 
-### [How to build your own Twitter-like "Open Source" page](http://blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page) using Aura. 
+### [How to build your own Twitter-like "Open Source" page](http://blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page) using Aura.
 
 <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/opensource-page.png" width="600px"/>
 
