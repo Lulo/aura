@@ -307,6 +307,10 @@ define(['aura/aura', 'aura/ext/components'], function (aura, ext) {
         spyAfter.should.have.been.called;
         spyCustom.should.have.been.called;
       });
+
+      it('should have called a callback added via components.register ');
+      
+      it('should not call a callback removed via components.deregister');
     });
 
     describe('sandbox', function () {
