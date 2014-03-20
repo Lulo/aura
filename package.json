@@ -1,6 +1,6 @@
 {
   "name": "aura",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "homepage":"http://aurajs.com",
   "url": "https://github.com/aurajs/aura",
   "devDependencies": {
